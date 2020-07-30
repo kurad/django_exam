@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success!</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
+</head>
+<body>
+    <div class='container'>   
+        <div id='my'><h3>Welcome, {{request.session.user}}</h3><a href="/logout">Logout</a></div>
+        
+        <h1>All Shows</h1>
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Job</th>
+                    <th>Location</th>
+                    <th>Actions</th>
+                </tr>
+                {% for jobs in all_jobs %}
+                <tr>
+                    <td>{{ jobs.id }}</td>
+                    <td>{{ jobs.job_title }}</td>
+                    <td>{{ jobs.location }}</td>
+                    <td><a href="">View</a> | 
+                        <a href="">Add</a> | 
+                        <a href="">Delete</a>
+                    </td>
+                    
+                </tr>
+                {% endfor %}
+            </table>
+
+            <a href="/new">Add a New Job</a>
+
+    </div>
+</body>
+
+</html>
